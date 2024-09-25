@@ -1,4 +1,4 @@
-from interfaz import menu # Importa el módulo 'menu' desde 'interfaz'
+from interfaz import menu # Importa el módulo 'menu' desde 'interfaz'.
 from modelo import ingreso # Importa el módulo 'ingreso' desde 'modelo', el cual gestiona la verificación de contraseñas.
 
 def iniciarSesion():#Solicita usuario y contrasena
