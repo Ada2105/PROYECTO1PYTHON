@@ -1,8 +1,8 @@
-import json
-import os
+import json # Importa el módulo 'json' para trabajar con archivos en formato JSON.
+import os  # Importa el módulo 'os' para verificar la existencia de archivos en el sistema.
 
 # Ruta del archivo donde se guardarán los módulos
-archivoModulos = 'persistencia/modulos.json'
+archivoModulos = 'persistencia/modulos.json' # Define la ruta donde se almacenarán los módulos en formato JSON.
 
 def cargarModulos():
     if not os.path.exists(archivoModulos):
@@ -11,8 +11,8 @@ def cargarModulos():
         return json.load(file)
 
 def guardarModulos(modulos):
-    with open(archivoModulos, 'w') as file:
-        json.dump(modulos, file, indent = 4)
+    with open(archivoModulos, 'w') as file: # Abre el archivo en modo escritura.
+        json.dump(modulos, file, indent = 4) # Guarda los módulos en el json con una indentación de 4 espacios.
 
 def registrarModulo():
     modulos = cargarModulos()
@@ -24,9 +24,9 @@ def registrarModulo():
 
             if cantidad < 1:
                 print("\nError. Debe ingresar al menos 1.")
-                continue
-            break
-        except ValueError:
+                continue # Si no, vuelve a pedir la cantidad.
+            break # Si el valor es válido, sale del bucle.
+        except ValueError:  # Captura el error si el usuario no ingresa un número entero.
             print("\nError. Debe ingresar un número entero.")
 
     for i in range(cantidad):
@@ -36,12 +36,12 @@ def registrarModulo():
             codigo = input("Ingrese el código del módulo: ")
             
             # Validar que el código sea numérico
-            if not codigo.isdigit():
+            if not codigo.isdigit(): # Verifica que el código ingresado sea un número.
                 print("\nError. El código debe ser numérico.")
                 continue  
 
-            # Verificar si el módulo ya existe
-            if any(modulo['codigo'] == codigo for modulo in modulos):
+            # Verificar si el código del módulo ya existe en la lista.
+            if any(modulo['codigo'] == codigo for modulo in modulos): # Comprueba si ya existe un módulo con el mismo código.
                 print(f"\nError. Ya existe un módulo con con el codigo '{codigo}'.")
                 continue  
 
@@ -55,9 +55,9 @@ def registrarModulo():
             if not duracion.isdigit():
                 print("Error. La duración debe ser un número.")
                 continue
-            break
+            break # Si la duración es válida, sale del bucle.
 
-        modulo = {
+        modulo = { # Crea un diccionario que representa al módulo.
             "codigo": codigo,
             "nombre": nombre,
             "duracion": duracion

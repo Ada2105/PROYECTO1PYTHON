@@ -1,16 +1,16 @@
 import json
 import os
 
-# Ruta del archivo donde se guardarán los estudiantes
+# Rutas de los archivos donde se guardarán los datos
 archivoEstudiantes = 'persistencia/estudiantes.json'
 archivoGrupos = 'persistencia/grupos.json'
 archivoModulos = 'persistencia/modulos.json'
 
 def cargarEstudiantes():
     if not os.path.exists(archivoEstudiantes):
-        return []  # Retorna una lista vacía si no existe el archivo
+        return []   # Si el archivo no existe, retorna una lista vacía
     with open(archivoEstudiantes, 'r') as file:
-        return json.load(file)
+        return json.load(file) # Cargar y devolver los datos en un json
 
 def guardarEstudiantes(estudiantes):
     with open(archivoEstudiantes, 'w') as file:
